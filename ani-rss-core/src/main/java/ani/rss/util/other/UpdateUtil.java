@@ -52,7 +52,7 @@ public class UpdateUtil {
                 .setLatest("")
                 .setMarkdownBody("");
         try {
-            HttpReq.get("https://github.com/wushuo894/ani-rss/releases/latest/download/info.json")
+            HttpReq.get("https://github.com/666wcy/ani-rss/releases/latest/download/info.json")
                     .timeout(3000)
                     .then(response -> {
                         int status = response.getStatus();
@@ -81,7 +81,7 @@ public class UpdateUtil {
                         if ("exe".equals(FileUtil.extName(jar))) {
                             filename = "ani-rss-launcher.exe";
                         }
-                        String downloadUrl = StrFormatter.format("https://github.com/wushuo894/ani-rss/releases/download/v{}/{}", latest, filename);
+                        String downloadUrl = StrFormatter.format("https://github.com/666wcy/ani-rss/releases/download/v{}/{}", latest, filename);
                         about.setDownloadUrl(downloadUrl);
 
                         try {

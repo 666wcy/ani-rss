@@ -48,7 +48,7 @@
         </el-text>
         <div>
           <el-checkbox v-model="props.config['completed']"
-                       :disabled="!props.config['verifyExpirationTime'] || !props.config.autoDisabled"
+                       :disabled="!props.config.autoDisabled"
                        label="订阅完结迁移"/>
         </div>
         <div>

@@ -3,8 +3,13 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# 前端依赖和编译产物
+node_modules/
 package-lock.json
 pnpm-lock.yaml
+dist/
+.vite/
+.cache/
 
 ### IntelliJ IDEA ###
 .idea
@@ -55,3 +60,14 @@ ani-rss-update.exe
 build_info
 *.versionsBackup
 jre.zip
+
+# 编译和发布产物
+release/
+*.jar
+*.exe
+*.zip
+*.md5
+!.mvn/wrapper/maven-wrapper.jar
+
+# 自定义文档（不提交）
+DONATION_REMOVAL_SUMMARY.md

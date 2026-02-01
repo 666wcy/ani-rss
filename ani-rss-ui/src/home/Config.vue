@@ -32,9 +32,11 @@
             </el-scrollbar>
           </div>
         </el-tab-pane>
+        <!-- 移除捐赠标签页
         <el-tab-pane :lazy="true" label="捐赠" name="afdian">
           <Afdian :config="config"/>
         </el-tab-pane>
+        -->
         <el-tab-pane label="关于" name="about" :lazy="true">
           <About :config="config"/>
         </el-tab-pane>

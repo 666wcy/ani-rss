@@ -48,11 +48,8 @@ public class AfdianUtil {
      * @return
      */
     public static Boolean verifyExpirationTime() {
-        Config config = ConfigUtil.CONFIG;
-        Long expirationTime = config.getExpirationTime();
-
-        long time = new Date().getTime();
-        return time < expirationTime;
+        // 移除捐赠验证，默认返回 true
+        return true;
     }
 
     /**
