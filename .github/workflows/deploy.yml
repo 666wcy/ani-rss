@@ -63,7 +63,7 @@ jobs:
           file: ./docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: 666wcy/ani-rss:latest,666wcy/ani-rss:${{ env.version }}
+          tags: benchao/ani-rss:latest,benchao/ani-rss:${{ env.version }}
       - name: Build and push Docker image (openj9)
         uses: docker/build-push-action@v6
         with:
@@ -71,7 +71,7 @@ jobs:
           file: ./docker/Dockerfile-openj9
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: 666wcy/ani-rss:openj9,666wcy/ani-rss:${{ env.version }}-openj9
+          tags: benchao/ani-rss:openj9,benchao/ani-rss:${{ env.version }}-openj9
       - name: Build and push Docker image (arm32v7)
         uses: docker/build-push-action@v6
         with:
@@ -79,4 +79,4 @@ jobs:
           file: ./docker/Dockerfile-arm32v7
           platforms: linux/arm/v7
           push: true
-          tags: 666wcy/ani-rss:arm32v7,666wcy/ani-rss:${{ env.version }}-arm32v7
+          tags: benchao/ani-rss:arm32v7,benchao/ani-rss:${{ env.version }}-arm32v7
