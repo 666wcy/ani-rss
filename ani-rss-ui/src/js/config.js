@@ -102,7 +102,7 @@ export let configData = {
     "dlLimit": 0,
     "expirationTime": 0,
     "outTradeNo": "",
-    "verifyExpirationTime": false,
+    "verifyExpirationTime": true,
     "tryOut": false,
     "procrastinating": false,
     "procrastinatingDay": 14,

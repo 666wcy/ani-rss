@@ -13,7 +13,11 @@
       </el-select>
     </el-form-item>
     <el-form-item label="地址">
-      <el-input v-model:model-value="props.config.downloadToolHost" placeholder="http://192.168.1.x:8080"/>
+      <el-input v-model:model-value="props.config.downloadToolHost"
+                :placeholder="props.config.downloadToolType === 'Pan123' ? '留空即可' : 'http://192.168.1.x:8080'"/>
+      <el-text v-if="props.config.downloadToolType === 'Pan123'" class="mx-1" size="small">
+        123 网盘无需填写地址，留空即可
+      </el-text>
     </el-form-item>
     <el-form-item v-if="props.config.downloadToolType === 'Aria2'" label="RPC 密钥">
       <el-input v-model:model-value="props.config.downloadToolPassword" placeholder="" show-password>
@@ -64,7 +68,8 @@
     </template>
     <template v-else>
       <el-form-item label="用户名">
-        <el-input v-model:model-value="props.config.downloadToolUsername" placeholder="username"
+        <el-input v-model:model-value="props.config.downloadToolUsername"
+                  :placeholder="props.config.downloadToolType === 'Pan123' ? '手机号或邮箱' : 'username'"
                   autocomplete="new-password">
           <template #prefix>
             <el-icon class="el-input__icon">
@@ -82,6 +87,9 @@
             </el-icon>
           </template>
         </el-input>
+        <el-text v-if="props.config.downloadToolType === 'Pan123'" class="mx-1" size="small">
+          使用 123 网盘账号密码登录，支持离线下载磁力链接
+        </el-text>
       </el-form-item>
     </template>
     <el-form-item>
@@ -202,6 +210,9 @@
       <el-collapse-item name="OpenList" title="OpenList 设置">
         <OpenList v-if="activeName.indexOf('OpenList') > -1" :config="props.config"/>
       </el-collapse-item>
+      <el-collapse-item name="Pan123" title="123 网盘设置">
+        <Pan123 v-if="activeName.indexOf('Pan123') > -1" :config="props.config"/>
+      </el-collapse-item>
     </el-collapse>
   </el-form>
 </template>
@@ -213,6 +224,7 @@ import {ElMessage, ElText} from "element-plus";
 import {Key, User} from "@element-plus/icons-vue";
 import QBittorrent from "@/config/download/qBittorrent.vue";
 import OpenList from "@/config/download/OpenList.vue";
+import Pan123 from "@/config/download/Pan123.vue";
 import PrioKeys from "@/config/PrioKeys.vue";
 import CustomTags from "@/config/CustomTags.vue";
 
@@ -220,7 +232,8 @@ const downloadSelect = ref([
   'qBittorrent',
   'Transmission',
   'Aria2',
-  'OpenList'
+  'OpenList',
+  'Pan123'
 ])
 
 const downloadLoginTestLoading = ref(false)

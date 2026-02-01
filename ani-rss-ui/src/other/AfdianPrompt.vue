@@ -1,36 +1,18 @@
 <template>
-  <AfdianDialog ref="afdian" :config="myConfig"/>
-  <div>
-    <el-text v-if="!myConfig['verifyExpirationTime']" class="mx-1" size="small">
-      需要
-      <el-button bg icon="Mug" size="small" text type="primary" @click="afdian?.show">捐赠</el-button>
-      后才可解锁 <strong>{{ props.name }}</strong>
-    </el-text>
+  <!-- 移除捐赠提示，所有功能默认解锁 -->
+  <div style="display: none;">
   </div>
 </template>
 
 <script setup>
-import AfdianDialog from "@/config/AfdianDialog.vue";
-import {onMounted, ref} from "vue";
-import api from "@/js/api.js";
-
-let afdian = ref()
+import {ref} from "vue";
 
 let myConfig = ref({
-  verifyExpirationTime: false
+  verifyExpirationTime: true  // 始终返回已验证
 })
 
-onMounted(() => {
-  if (props.config) {
-    myConfig.value = props.config;
-    return
-  }
-
-  api.get('api/config')
-      .then(res => {
-        myConfig.value = res.data
-      })
+const props = defineProps({
+  name: String,
+  config: Object
 })
-
-let props = defineProps(['config', 'name'])
 </script>
